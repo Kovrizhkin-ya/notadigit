@@ -4,7 +4,7 @@ import uploadImage from './browse.png';
 import browseIcon from './upload.svg';
 import downloadImage from './download.png';
 
-const url = "https://9da2-91-219-254-102.ngrok-free.app";
+const url = process.env.REACT_APP_API_URL;;
 
 const statusProgressMapping = {
   'Extracting staffline and symbols': 5,
