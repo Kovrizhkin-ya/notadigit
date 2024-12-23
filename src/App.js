@@ -4,7 +4,7 @@ import uploadImage from './browse.png';
 import browseIcon from './upload.svg';
 import downloadImage from './download.png';
 
-const url = process.env.REACT_APP_API_URL;
+const url = "https://9da2-91-219-254-102.ngrok-free.app";
 
 const statusProgressMapping = {
   'Extracting staffline and symbols': 5,
@@ -59,20 +59,24 @@ function App() {
     const formData = new FormData();
     formData.append('file', file);
 
-    const response = await fetch(`${url}/api/sendFile`, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        "ngrok-skip-browser-warning": "any-value"
-      }
-    });
+    try {
+      const response = await fetch(`${url}/api/sendFile`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          "ngrok-skip-browser-warning": "any-value"
+        }
+      });
 
-    if (response.ok) {
-      const data = await response.json();
-      setFileId(data.file_id);
-      checkFileStatus(data.file_id);
-    } else {
-      console.error('File upload failed.');
+      if (response.ok) {
+        const data = await response.json();
+        setFileId(data.file_id);
+        checkFileStatus(data.file_id);
+      } else {
+        console.error('File upload failed.');
+      }
+    } catch (error) {
+      console.error('Failed to fetch:', error);
     }
   };
 
@@ -80,49 +84,73 @@ function App() {
     setProcessing(true);
 
     const interval = setInterval(async () => {
-      const response = await fetch(`${url}/api/checkFileStatus/${fileId}`, {
-     headers: {
-          "ngrok-skip-browser-warning": "any-value"
-        } 
-      });
+      try {
+        const response = await fetch(`${url}/api/checkFileStatus/${fileId}`, {
+          headers: {
+            "ngrok-skip-browser-warning": "any-value"
+          }
+        });
 
-      if (response.ok) {
-        const text = await response.text();
-        const data = JSON.parse(text);
-        const message = data.message;  
+        if (response.ok) {
+          const text = await response.text();
+          const data = JSON.parse(text);
+          const message = data.message;
 
-        setStatusMessage(message); 
+          setStatusMessage(message);
 
-        if (statusProgressMapping[message] !== undefined) {
-          setProgress(statusProgressMapping[message]);
-        }  
+          if (statusProgressMapping[message] !== undefined) {
+            setProgress(statusProgressMapping[message]);
+          }
 
-        if (message === 'File is ready') {
-          clearInterval(interval);
-          setProcessing(false);
-          setDownloadUrl(`${url}/api/getFile/${fileId}`);
-        } else if (message === 'Failed') {
-          clearInterval(interval);
-          setProcessing(false);
-          console.error('File processing failed.');
+          if (message === 'File is ready') {
+            clearInterval(interval);
+            setProcessing(false);
+            setDownloadUrl(`${url}/api/getFile/${fileId}`);
+          } else if (message === 'Failed') {
+            clearInterval(interval);
+            setProcessing(false);
+            console.error('File processing failed.');
+          }
+        } else {
+          console.error('Failed to check file status.');
         }
-      } else {
-        console.error('Failed to check file status.');
+      } catch (error) {
+        clearInterval(interval);
+        setProcessing(false);
+        console.error('Failed to fetch:', error);
       }
     }, 5000);
   };
 
   const handleDownload = () => {
     if (downloadUrl) {
-      const a = document.createElement('a');
-      a.href = downloadUrl;
-      a.download = 'file';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      // Create a fetch request with custom headers
+      fetch(downloadUrl, {
+        method: 'GET',
+        headers: {
+          "ngrok-skip-browser-warning": "any-value"
+        }
+      })
+      .then(response => response.blob()) // Get the response as a blob
+      .then(blob => {
+        const a = document.createElement('a');
+        const originalFileName = file.name;
+        const fileNameWithoutExtension = originalFileName.substring(0, originalFileName.lastIndexOf('.'));
+        const newFileName = `${fileNameWithoutExtension}.musicxml`;
+  
+        // Create a download link for the blob
+        a.href = URL.createObjectURL(blob);
+        a.download = newFileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      })
+      .catch(error => {
+        console.error('Download failed:', error);
+      });
     }
   };
-
+  
 
   const handleReset = () => {
     setFile(null);
