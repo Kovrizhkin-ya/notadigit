@@ -1,0 +1,220 @@
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: white; 
+  border-radius: 30px;
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
+  flex-direction: column;
+  overflow: hidden;
+  border: none; 
+}
+
+.upload-box {
+  display: flex;
+  position: relative;
+  width: 80vw;
+  height: 30vh;
+  background-color: white;
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #A2A2A2;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  max-width: 975px;
+  max-height: 276px;
+  box-sizing: border-box;
+}
+
+.upload-image {
+  width: 53px;
+  height: 49px;
+  object-fit: contain;
+  margin-bottom: 10px; 
+}
+
+.upload-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  font-weight: regular;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.upload-supported {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  font-weight: regular;
+  color: rgba(0, 0, 0, 0.4); 
+  margin-bottom: 20px; 
+}
+
+.browse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #D9D9D9;
+  width: 94px;
+  height: 23px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.browse-icon {
+  width: 32px;
+  height: 25px;
+  margin-right: 5px;
+  object-fit: contain;
+}
+
+.browse-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  color: #000000;
+}
+
+.uploaded-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.convert-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+  max-width: 900px; 
+}
+
+.convert-near-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  color: #000000;
+  margin: 0;
+}
+
+.convert-btn {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  color: #000000;
+  background-color: #D7B8FD;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.convert-btn:hover {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  color: #000000;
+  background-color: #d089fc;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+
+.download-container {
+  margin-top: 20px;
+  background-color: #5500D0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.download-link {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.download-image {
+  margin-right: 10px;
+  width: 40px;
+  height: 38px;
+}
+
+.download-container:hover {
+  background-color: #D0A9FF;
+}
+
+.reset-link-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.reset-link {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  color: #5500D0;
+  text-decoration: none;
+}
+
+.reset-link:hover {
+  text-decoration: underline;
+  font-color: #D0A9FF;
+}
+
+
+.progress-block {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 20px;
+}
+
+.progress-message {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  color: black;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: bold;
+  z-index: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.progress-container {
+  position: relative;
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  height: 20px;
+  margin-top: 20px;
+  max-width: 900px;
+  display: block;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #D0A9FF;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Instrument Sans', sans-serif;
+  border-radius: 5px;
+  font-size: 14px;
+}

@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #EDE7F6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  position: relative;
+  height: 94px;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  position: absolute;
+  left: 78px;
+}
+
+.logo-img {
+  margin-top: 10px;
+  width: 257px;
+  height: 164px;
+}
+
+.premium-btn {
+  position: absolute;
+  left: 1162px;
+  width: 152px;
+  height: 37px;
+  background-color: #6B00F7;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.premium-btn .crown-img {
+  position: absolute;
+  left: 7px;
+  top: 13px;
+  width: 22px;
+  height: 10.93px;
+}
+
+.premium-btn .premium-text {
+  position: absolute;
+  left: 35px;
+  top: 5px;
+  font-size: 24px;
+  font-weight: regular;
+}
+
+.login-btn {
+  position: absolute;
+  left: 1354px;
+  width: 124px;
+  height: 44px;
+  background-color: transparent;
+  color: #0D0D64;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+
+.login-btn .login-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: regular;
+  font-size: 24px;
+  color: #0D0D64;
+  margin-right: 8px;
+}
+
+.login-btn .login-icon {
+  width: 42px;
+  height: 44px;
+}
+
+.premium-btn:hover {
+  background-color: #5500D0;
+}
+
+.footer {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  margin-top: 1000px;
+  width: 100%;
+  background-color: #3D3D3D;
+  color: white;
+  text-align: left;
+  padding: 20px 0;
+  font-size: 16px;
+  font-weight: regular;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.title {
+	margin-top: 60px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    color: #000000;
+    margin-bottom: 5px;
+	text-align: center;
+}
+
+.description {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 16px;
+    color: #000000;
+	text-align: center;
+	font-weight: bold;
+}
+
